@@ -307,6 +307,16 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			case GAME_SCENE_STATE::GAME:
 			{
 				OnIdle();
+
+				SNAILMOVE sm;
+				sm.id = PKT_SNAILMOVE;
+				sm.size = sizeof(SNAILMOVE);
+				sm.xpos = s_snailblue.ReturnX();
+				sm.ypos = s_snailblue.ReturnY();
+				strcpy(sm.playerid, g_myStrID);
+
+				OnSendPacket((char*)& sm, sm.size);
+
 				OnUpdate(hwnd, curTick - tick);
 				tick = curTick;
 			}
@@ -353,11 +363,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		case VK_DOWN: yOffset = 10; break;
 		}
 
-		g_myImage.id = PKT_SNAILMOVE;
-		g_myImage.size = sizeof(SNAILMOVE);
-		g_myImage.xpos = xOffset;
-		g_myImage.ypos = yOffset;
-		OnSendPacket((char*)& g_myImage, g_myImage.size);
+		SNAILMOVE sm;
+		sm.id = PKT_SNAILMOVE;
+		sm.size = sizeof(SNAILMOVE);
+		sm.xpos = xOffset;
+		sm.ypos = yOffset;
+		strcpy(sm.playerid, g_myStrID);
+		
+		OnSendPacket((char*)& sm, sm.size);
 	}
 	break;
 	case WM_KEYUP:
@@ -639,9 +652,11 @@ void OnPacketProcess(LPPACKETHEADER pHeader)
 	break;
 	case PKT_SNAILMOVE:
 	{
-		LPSNAILMOVE pUserLogOut = (LPSNAILMOVE)pHeader;
-		g_myImage.xpos = pUserLogOut->xpos;
-		g_myImage.ypos = pUserLogOut->ypos;
+		LPSNAILMOVE pSnailMove = (LPSNAILMOVE)pHeader;
+		if (strcmp(g_myStrID, pSnailMove->playerid))
+		{
+		//s_snailblue.OnMove();
+		}
 	}
 	break;
 	}
