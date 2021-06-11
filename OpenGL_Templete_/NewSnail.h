@@ -17,6 +17,7 @@ class NewSnail : public CMyCharacter
 private:
 	float slowdown = 5.0f;
 	int skin;
+	int playId;
 protected:
 	Vector2		m_vecCenter[6][6];
 	DWORD	    m_deltaTime;
@@ -33,8 +34,9 @@ public:
 	NewSnail();
 	virtual ~NewSnail();
 	void SetSkin(int number) { skin = number; }
+	void SetPlayer(int number) { playId= number; }
 	int Skinreturn() { return skin; }
-	void OnDraw(int x, int y);
+	void OnDraw(int z);
 	void OnUpdate(DWORD tick);
 	void OnDraw(int x, int y, int z);
 	void OnUpdate(DWORD tick, int x);

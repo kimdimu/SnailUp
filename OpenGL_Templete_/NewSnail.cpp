@@ -45,7 +45,7 @@ bool NewSnail::LoadCharacterInfo(char* filename)
 	return true;
 }
 
-void NewSnail::OnDraw(int x, int y)
+void NewSnail::OnDraw(int z)
 {
 	float xPos, yPos;
 
@@ -53,60 +53,165 @@ void NewSnail::OnDraw(int x, int y)
 	yPos = m_vecPosition.y - m_vecCenter[m_idxMotion][m_aniIndex].y;
 
 	m_pSprite->Draw(xPos, yPos,
-		m_rcFrame[0][m_aniIndex].left,
-		m_rcFrame[0][m_aniIndex].top,
-		m_rcFrame[0][m_aniIndex].right,
-		m_rcFrame[0][m_aniIndex].bottom, 0);
+		m_rcFrame[z][m_aniIndex].left,
+		m_rcFrame[z][m_aniIndex].top,
+		m_rcFrame[z][m_aniIndex].right,
+		m_rcFrame[z][m_aniIndex].bottom, 0);
 }
 
 void NewSnail::OnUpdate(DWORD tick)
 {
 	m_deltaTime += tick;
 
-	BYTE key[256];
-	::GetKeyboardState(key);
-	if (key[VK_LSHIFT] & 0x80)
+	switch (playId)
 	{
-		m_deltaTime2 += tick;
-		if (m_deltaTime2 <= 10)
-			slowdown += 0.021f;
-	}
-	else
+	case 0: //blue
 	{
-		slowdown += 0.0f;
-		m_deltaTime2 = 0;
-	}
+		BYTE key[256];
+		::GetKeyboardState(key);
+		if (key[VK_LSHIFT] & 0x80)
+		{
+			m_deltaTime2 += tick;
+			if (m_deltaTime2 <= 10)
+				slowdown += 0.021f;
+		}
+		else
+		{
+			slowdown += 0.0f;
+			m_deltaTime2 = 0;
+		}
 
-	if (key[0x41] & 0x80)
-	{
-		if (m_vecPosition.x >= 0)
-			OnMove(-0.02f * slowdown, 0.02f);
+		if (key[0x41] & 0x80)
+		{
+			if (m_vecPosition.x >= 0)
+				OnMove(-0.02f * slowdown, 0.02f);
+			else
+				OnMove(0.0f, 0.02f);
+		}
+		else if (key[0x44] & 0x80)
+		{
+			if (m_vecPosition.x <= 512)
+				OnMove(0.02f * slowdown, 0.02f);
+			else
+				OnMove(0.0f, 0.02f);
+		}
+		else if (key[0x57] & 0x80)
+		{
+			if (m_vecPosition.y > 0)
+				OnMove(0.0f, -0.01f * slowdown);
+			else
+				OnMove(0.0f, 0.0f);
+		}
 		else
+		{
 			OnMove(0.0f, 0.02f);
-	}
-	else if (key[0x44] & 0x80)
-	{
-		if (m_vecPosition.x <= 512)
-			OnMove(0.02f * slowdown, 0.02f);
-		else
-			OnMove(0.0f, 0.02f);
-	}
-	else if (key[0x57] & 0x80)
-	{
-		if (m_vecPosition.y > 0)
-			OnMove(0.0f, -0.01f * slowdown);
-		else
-			OnMove(0.0f, 0.0f);
-	}
-	else
-	{
-		OnMove(0.0f, 0.02f);
-	}
+		}
 
-	if (slowdown <= 0)
-	{
-		OnMove(0.0f, 0.02f);
+		if (slowdown <= 0)
+		{
+			OnMove(0.0f, 0.02f);
+		}
 	}
+	break;
+	case 1:
+	{
+		BYTE key[256];
+
+		::GetKeyboardState(key);
+		if (key[VK_SPACE] & 0x80)
+		{
+			m_deltaTime2 += tick;
+			if (m_deltaTime2 <= 10)
+				slowdown += 0.021f;
+		}
+		else
+		{
+			slowdown += 0.0f;
+			m_deltaTime2 = 0;
+		}
+
+		if (key[0x48] & 0x80)
+		{
+			if (m_vecPosition.x >= 0)
+				OnMove(-0.02f * slowdown, 0.02f);
+			else
+				OnMove(0.0f, 0.02f);
+		}
+		else if (key[0x4B] & 0x80)
+		{
+			if (m_vecPosition.x <= 512)
+				OnMove(0.02f * slowdown, 0.02f);
+			else
+				OnMove(0.0f, 0.02f);
+		}
+		else if (key[0x55] & 0x80)
+		{
+			if (m_vecPosition.y > 0)
+				OnMove(0.0f, -0.01f * slowdown);
+			else
+				OnMove(0.0f, 0.0f);
+		}
+		else
+		{
+			OnMove(0.0f, 0.02f);
+		}
+
+		if (slowdown <= 0)
+		{
+			OnMove(0.0f, 0.02f);
+		}
+	}
+	break;
+	case 2: //red
+	{
+		BYTE key[256];
+		::GetKeyboardState(key);
+		if (key[VK_RSHIFT] & 0x80)
+		{
+			m_deltaTime2 += tick;
+			if (m_deltaTime2 <= 10)
+				slowdown += 0.021f;
+		}
+		else
+		{
+			slowdown += 0.0f;
+			m_deltaTime2 = 0;
+		}
+
+		if (key[VK_LEFT] & 0x80)
+		{
+			if (m_vecPosition.x >= 0)
+				OnMove(-0.02f * slowdown, 0.02f);
+			else
+				OnMove(0.0f, 0.02f);
+		}
+		else if (key[VK_RIGHT] & 0x80)
+		{
+			if (m_vecPosition.x <= 512)
+				OnMove(0.02f * slowdown, 0.02f);
+			else
+				OnMove(0.0f, 0.02f);
+		}
+		else if (key[VK_UP] & 0x80)
+		{
+			if (m_vecPosition.y > 0)
+				OnMove(0.0f, -0.01f * slowdown);
+			else
+				OnMove(0.0f, 0.0f);
+		}
+		else
+		{
+			OnMove(0.0f, 0.02f);
+		}
+
+		if (slowdown <= 0)
+		{
+			OnMove(0.0f, 0.02f);
+		}
+	}
+	break;
+	}
+		
 	m_vecPosition.x += (m_vecDirection.x * 200.0f * tick / 1000.0f);
 	m_vecPosition.y += (m_vecDirection.y * 200.0f * tick / 1000.0f);
 
@@ -126,17 +231,16 @@ void NewSnail::OnUpdate(DWORD tick)
 
 void NewSnail::OnDraw(int x, int y, int z)
 {
-	slowdown = 2.5f;
 	float xPos, yPos;
 
 	xPos = m_vecPosition.x - m_vecCenter[m_idxMotion][m_aniIndex].x;
 	yPos = m_vecPosition.y - m_vecCenter[m_idxMotion][m_aniIndex].y;
 
 	m_pSprite->Draw(x, y,
-		m_rcFrame[0][m_aniIndex].left,
-		m_rcFrame[0][m_aniIndex].top,
-		m_rcFrame[0][m_aniIndex].right,
-		m_rcFrame[0][m_aniIndex].bottom, 0);
+		m_rcFrame[z][m_aniIndex].left,
+		m_rcFrame[z][m_aniIndex].top,
+		m_rcFrame[z][m_aniIndex].right,
+		m_rcFrame[z][m_aniIndex].bottom, 0);
 }
 
 void NewSnail::OnUpdate(DWORD tick, int x)

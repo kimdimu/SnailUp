@@ -265,7 +265,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		}
 		else //메세지가 없을 경우 게임 루프를 실행한다.
 		{
-			OnIdle();
+			//OnIdle();
 			DWORD curTick = GetTickCount();
 			switch (g_gameState)
 			{
@@ -309,8 +309,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 				OnIdle();
 				OnUpdate(hwnd, curTick - tick);
 				tick = curTick;
-
-				//g_MainBuffer->DrawImage(g_Bitmap, 0, 0);
 			}
 			break;
 			}
@@ -332,6 +330,36 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 	switch (msg)
 	{
+	case WM_KEYDOWN:
+	{
+		if (wParam == VK_RETURN)
+		{
+			HWND hEdit = CreateWindow("edit", NULL, WS_CHILD | WS_VISIBLE | WS_BORDER, 100, 100, 200, 25, hWnd, NULL, g_hInst, NULL);
+			g_OldEditFunc = SetWindowLong(hEdit, GWL_WNDPROC, (LONG)EditFunction);
+			SetFocus(hEdit);
+
+			break;
+		}
+
+		int xOffset = 0;
+		int yOffset = 0;
+
+		xOffset = 0; yOffset = 0;
+		switch (wParam)
+		{
+		case VK_LEFT: xOffset = -10;  break;
+		case VK_RIGHT: xOffset = 10;  break;
+		case VK_UP: yOffset = -10;  break;
+		case VK_DOWN: yOffset = 10; break;
+		}
+
+		g_myImage.id = PKT_SNAILMOVE;
+		g_myImage.size = sizeof(SNAILMOVE);
+		g_myImage.xpos = xOffset;
+		g_myImage.ypos = yOffset;
+		OnSendPacket((char*)& g_myImage, g_myImage.size);
+	}
+	break;
 	case WM_KEYUP:
 	{
 		switch (wParam)
@@ -344,9 +372,86 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	break;
 	case WM_CREATE:
 	{
+		// socket()
+		g_sock = socket(AF_INET, SOCK_STREAM, 0);
+		if (g_sock == INVALID_SOCKET) err_quit("socket()");
+
+
+		// 서버 소켓 주소 구조체 초기화
+		SOCKADDR_IN serverAddr;
+		ZeroMemory(&serverAddr, sizeof(serverAddr));
+		serverAddr.sin_family = AF_INET;
+		serverAddr.sin_port = htons(30000);
+		serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+		if (connect(g_sock, (struct sockaddr*) & serverAddr, sizeof(serverAddr)) == SOCKET_ERROR)
+		{
+			closesocket(g_sock);
+			err_quit("connect Error.......");
+		}
+
+		if (WSAAsyncSelect(g_sock, hWnd, WM_SOCKET, FD_WRITE | FD_READ | FD_CLOSE) != 0)
+		{
+			closesocket(g_sock);
+			err_quit("WSAAsyncSelect Error.......");
+		}
 		g_hDC = GetDC(hWnd);
 
 		g_OpenGL.Create(g_hDC);
+	}
+	break;
+	case WM_SOCKET:
+	{
+		// 오류 발생 여부 확인
+		if (WSAGETSELECTERROR(lParam))
+		{
+			err_quit("WSAGETSELECTERROR(lParam)...");
+			break;
+		}
+
+		// 메시지 처리
+		switch (WSAGETSELECTEVENT(lParam))
+		{
+		case FD_WRITE:
+		{
+		}
+		break;
+		case FD_READ:
+		{
+			// 데이터 통신에 사용할 변수
+			char buf[BUFSIZE];
+
+			int ret = recv(wParam, (char*)buf, BUFSIZE, 0);
+			if (ret == SOCKET_ERROR)
+			{
+				if (WSAGetLastError() != WSAEWOULDBLOCK)
+				{
+				}
+				break;
+			}
+
+			int val = g_cirQueue.OnPutData(buf, ret);
+			if (val != 1)
+			{
+				//error
+				break;
+			}
+
+			PACKETHEADER* pHeader = g_cirQueue.GetPacket();
+			while (pHeader != NULL)
+			{
+				OnPacketProcess(pHeader);
+
+				g_cirQueue.OnPopData(pHeader->size);
+				pHeader = g_cirQueue.GetPacket();
+			}
+		}
+		break;
+		case FD_CLOSE:
+		{
+			closesocket(wParam);
+		}
+		break;
+		}
 	}
 	break;
 	case WM_SIZE:
@@ -358,8 +463,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	}
 	break;
 	case WM_DESTROY:
+	{
+		MYLOGIN logOut;
+		logOut.id = PKT_LOGOUT;
+		logOut.size = sizeof(MYLOGIN);
+		strcpy(logOut.playerid, g_myStrID);
+
+		OnSendPacket((char*)& logOut, logOut.size);
+
 		PostQuitMessage(0);
-		break;
+	}
+	break;
 	}
 
 	return DefWindowProc(hWnd, msg, wParam, lParam);
@@ -423,6 +537,7 @@ void OnUpdate(HWND hWnd, DWORD tick)
 	//TextOut(hDC, 300, 100, "ABCD", strlen("ABCD"));
 	//g_BackBuffer->ReleaseHDC(hDC);
 }
+
 int OnSendPacket(char* data, int size)
 {
 	int retval = send(g_sock, data, size, 0);
@@ -435,7 +550,6 @@ int OnSendPacket(char* data, int size)
 
 	return retval;
 }
-
 
 // 소켓 함수 오류 출력 후 종료
 void err_quit(char* msg)
@@ -451,8 +565,6 @@ void err_quit(char* msg)
 	LocalFree(lpMsgBuf);
 	exit(-1);
 }
-
-
 
 void OnPacketProcess(LPPACKETHEADER pHeader)
 {

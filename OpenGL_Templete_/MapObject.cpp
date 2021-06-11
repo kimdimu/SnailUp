@@ -122,15 +122,15 @@ void CMapObject::OnUpdate(DWORD tick)
 		//타이틀 이미지 그리기
 		s_titleImg.OnUpdate(tick, 0, 0);
 		s_titleImg.SetPosition(0, 0);
-		s_titleImg.OnDraw(0, 0);
+		s_titleImg.OnDraw(0);
 
 		BYTE key[256];
 		::GetKeyboardState(key);
 
 		if (key[VK_RETURN] & 0x80)
-			scean = 1;
-		if (key[0x43] & 0x80)
 			scean = 2;
+		if (key[0x43] & 0x80)
+			scean = 1;
 
 		//응원할 달팽이 고르기
 		if (key[0x31] & 0x80)
@@ -154,8 +154,11 @@ void CMapObject::OnUpdate(DWORD tick)
 		//위치 초기화하기
 		s_snail.SetPosition(startx, 450);
 		s_snailblue.SetPosition(128, 450);
+		s_snailblue.SetPlayer(0);
 		s_snailyellow.SetPosition(256, 450);
+		s_snailyellow.SetPlayer(1);
 		s_snailred.SetPosition(384, 450);
+		s_snailred.SetPlayer(2);
 		//
 		s_snailBai.SetPosition(128, 450);
 		s_snailYai.SetPosition(256, 450);
@@ -220,7 +223,7 @@ void CMapObject::OnUpdate(DWORD tick)
 		}
 
 
-		s_snail.OnDraw(0, 0);
+		s_snail.OnDraw(0);
 
 		//선택한 달팽이에 따라 등장하는 개체가 다른 ai 달팽이
 		if (s_snail.Skinreturn() == 0)
@@ -247,22 +250,22 @@ void CMapObject::OnUpdate(DWORD tick)
 
 		//드로우
 		s_bigstone.OnMoveY(offset);
-		s_bigstone.OnDraw(0, 0);
+		s_bigstone.OnDraw(0);
 
 		s_smallstone.OnMoveY(offset);
-		s_smallstone.OnDraw(0, 0);
+		s_smallstone.OnDraw(0);
 
 		s_smallstone2.OnMoveY(offset);
-		s_smallstone2.OnDraw(0, 0);
+		s_smallstone2.OnDraw(0);
 
 		s_bigstone2.OnMoveY(offset);
-		s_bigstone2.OnDraw(0, 0);
+		s_bigstone2.OnDraw(0);
 
 		s_endline.OnMoveY(offset);
-		s_endline.OnDraw(0, 0);
+		s_endline.OnDraw(0);
 
-		s_snailloseImg.OnDraw(0, 0);
-		s_snailwinImg.OnDraw(0, 0);
+		s_snailloseImg.OnDraw(0);
+		s_snailwinImg.OnDraw(0);
 
 
 		MAP_POSTDRAWOBJ::iterator itPost = m_mapPostDrawSubObject.begin();
@@ -438,28 +441,28 @@ void CMapObject::OnUpdate(DWORD tick)
 			pSubObj->OnUpdate(m_pSprite, tick, offset);
 		}
 
-		s_snailblue.OnDraw(0, 0);
-		s_snailyellow.OnDraw(0, 0);
-		s_snailred.OnDraw(0, 0);
+		s_snailblue.OnDraw(0);
+		s_snailyellow.OnDraw(1);
+		s_snailred.OnDraw(2);
 
 
 		s_bigstone.OnMoveY(offset);
-		s_bigstone.OnDraw(0, 0);
+		s_bigstone.OnDraw(0);
 
 		s_smallstone.OnMoveY(offset);
-		s_smallstone.OnDraw(0, 0);
+		s_smallstone.OnDraw(0);
 
 		s_smallstone2.OnMoveY(offset);
-		s_smallstone2.OnDraw(0, 0);
+		s_smallstone2.OnDraw(0);
 
 		s_bigstone2.OnMoveY(offset);
-		s_bigstone2.OnDraw(0, 0);
+		s_bigstone2.OnDraw(0);
 
 		s_endline.OnMoveY(offset);
-		s_endline.OnDraw(0, 0);
+		s_endline.OnDraw(0);
 
-		s_snailloseImg.OnDraw(0, 0);
-		s_snailwinImg.OnDraw(0, 0);
+		s_snailloseImg.OnDraw(0);
+		s_snailwinImg.OnDraw(0);
 
 
 		MAP_POSTDRAWOBJ::iterator itPost = m_mapPostDrawSubObject.begin();
@@ -528,7 +531,7 @@ void CMapObject::OnUpdate(DWORD tick)
 	{
 		s_snailloseImg.OnUpdate(tick, 0, 0);
 		s_snailloseImg.SetPosition(0, 0);
-		s_snailloseImg.OnDraw(0, 0);
+		s_snailloseImg.OnDraw(0);
 
 		BYTE key[256];
 		::GetKeyboardState(key);
@@ -539,7 +542,7 @@ void CMapObject::OnUpdate(DWORD tick)
 	{
 		s_snailwinImg.OnUpdate(tick, 0, 0);
 		s_snailwinImg.SetPosition(0, 0);
-		s_snailwinImg.OnDraw(0, 0);
+		s_snailwinImg.OnDraw(0);
 
 		BYTE key[256];
 		::GetKeyboardState(key);
@@ -550,7 +553,7 @@ void CMapObject::OnUpdate(DWORD tick)
 	{
 		s_snailBwinImg.OnUpdate(tick, 0, 0);
 		s_snailBwinImg.SetPosition(0, 0);
-		s_snailBwinImg.OnDraw(0, 0);
+		s_snailBwinImg.OnDraw(0);
 
 		BYTE key[256];
 		::GetKeyboardState(key);
@@ -561,7 +564,7 @@ void CMapObject::OnUpdate(DWORD tick)
 	{
 		s_snailYwinImg.OnUpdate(tick, 0, 0);
 		s_snailYwinImg.SetPosition(0, 0);
-		s_snailYwinImg.OnDraw(0, 0);
+		s_snailYwinImg.OnDraw(0);
 
 		BYTE key[256];
 		::GetKeyboardState(key);
@@ -572,7 +575,7 @@ void CMapObject::OnUpdate(DWORD tick)
 	{
 		s_snailRwinImg.OnUpdate(tick, 0, 0);
 		s_snailRwinImg.SetPosition(0, 0);
-		s_snailRwinImg.OnDraw(0, 0);
+		s_snailRwinImg.OnDraw(0);
 
 		BYTE key[256];
 		::GetKeyboardState(key);
