@@ -408,7 +408,21 @@ LRESULT CALLBACK EditFunction(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPa
 
 	return ((WNDPROC)g_OldEditFunc)(hDlg, message, wParam, lParam);
 }
+void OnUpdate(HWND hWnd, DWORD tick)
+{
+	if (hWnd == NULL)
+		return;
 
+	//Color color(255, 255, 255);
+	//g_BackBuffer->Clear(color);
+
+	//g_myImage.img.Move(g_BackBuffer, g_myImage.xpos, g_myImage.ypos);
+
+	//text out...
+	//HDC hDC = g_BackBuffer->GetHDC();
+	//TextOut(hDC, 300, 100, "ABCD", strlen("ABCD"));
+	//g_BackBuffer->ReleaseHDC(hDC);
+}
 int OnSendPacket(char* data, int size)
 {
 	int retval = send(g_sock, data, size, 0);
