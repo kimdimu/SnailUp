@@ -1,0 +1,3 @@
+Maps/background4.png
+0 1
+0 0 512 512 5

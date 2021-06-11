@@ -1,0 +1,37 @@
+﻿  MonsterA.cpp
+  CWaves.cpp
+C:\Users\KCW\Downloads\OpenGL_Templete_sound_Game5\OpenGL_Templete\MonsterA.cpp(62,1): error C1010:  미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "stdafx.h"'을(를) 소스에 추가하시겠습니까?
+  dsManager.cpp
+C:\Users\KCW\Downloads\OpenGL_Templete_sound_Game5\OpenGL_Templete\CWaves.cpp(678,1): error C1010:  미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "stdafx.h"'을(를) 소스에 추가하시겠습니까?
+  dsObject.cpp
+C:\Users\KCW\Downloads\OpenGL_Templete_sound_Game5\OpenGL_Templete\dsManager.cpp(57,1): error C1010:  미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "stdafx.h"'을(를) 소스에 추가하시겠습니까?
+  dsOpenALSoundManager.cpp
+C:\Users\KCW\Downloads\OpenGL_Templete_sound_Game5\OpenGL_Templete\dsObject.cpp(42,1): error C1010:  미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "stdafx.h"'을(를) 소스에 추가하시겠습니까?
+  dsResource.cpp
+C:\Users\KCW\Downloads\OpenGL_Templete_sound_Game5\OpenGL_Templete\dsOpenALSoundManager.cpp(127,1): error C1010:  미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "stdafx.h"'을(를) 소스에 추가하시겠습니까?
+  dsSound.cpp
+C:\Users\KCW\Downloads\OpenGL_Templete_sound_Game5\OpenGL_Templete\dsResource.cpp(29,1): error C1010:  미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "stdafx.h"'을(를) 소스에 추가하시겠습니까?
+  dsTexture.cpp
+C:\Users\KCW\Downloads\OpenGL_Templete_sound_Game5\OpenGL_Templete\dsSound.cpp(179,1): error C1010:  미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "stdafx.h"'을(를) 소스에 추가하시겠습니까?
+  dsVector2.cpp
+C:\Users\KCW\Downloads\OpenGL_Templete_sound_Game5\OpenGL_Templete\dsTexture.cpp(301,1): error C1010:  미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "stdafx.h"'을(를) 소스에 추가하시겠습니까?
+  dsVector3.cpp
+C:\Users\KCW\Downloads\OpenGL_Templete_sound_Game5\OpenGL_Templete\dsVector2.cpp(245,1): error C1010:  미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "stdafx.h"'을(를) 소스에 추가하시겠습니까?
+  FrameOpenGL.cpp
+C:\Users\KCW\Downloads\OpenGL_Templete_sound_Game5\OpenGL_Templete\dsVector3.cpp(12,1): error C1010:  미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "stdafx.h"'을(를) 소스에 추가하시겠습니까?
+  MapObject.cpp
+C:\Users\KCW\Downloads\OpenGL_Templete_sound_Game5\OpenGL_Templete\FrameOpenGL.cpp(213,1): error C1010:  미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "stdafx.h"'을(를) 소스에 추가하시겠습니까?
+  MapSubObject.cpp
+C:\Users\KCW\Downloads\OpenGL_Templete_sound_Game5\OpenGL_Templete\MapObject.cpp(161,1): error C1010:  미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "stdafx.h"'을(를) 소스에 추가하시겠습니까?
+  MonsterB.cpp
+C:\Users\KCW\Downloads\OpenGL_Templete_sound_Game5\OpenGL_Templete\MapSubObject.cpp(78,1): error C1010:  미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "stdafx.h"'을(를) 소스에 추가하시겠습니까?
+  MyCharacter.cpp
+C:\Users\KCW\Downloads\OpenGL_Templete_sound_Game5\OpenGL_Templete\MonsterB.cpp(41,1): error C1010:  미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "stdafx.h"'을(를) 소스에 추가하시겠습니까?
+  MyObject.cpp
+C:\Users\KCW\Downloads\OpenGL_Templete_sound_Game5\OpenGL_Templete\MyCharacter.cpp(110,1): error C1010:  미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "stdafx.h"'을(를) 소스에 추가하시겠습니까?
+  OpenGL_Templete.cpp
+C:\Users\KCW\Downloads\OpenGL_Templete_sound_Game5\OpenGL_Templete\MyObject.cpp(16,1): error C1010:  미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "stdafx.h"'을(를) 소스에 추가하시겠습니까?
+  Wizard.cpp
+C:\Users\KCW\Downloads\OpenGL_Templete_sound_Game5\OpenGL_Templete\OpenGL_Templete.cpp(229,1): error C1010:  미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "stdafx.h"'을(를) 소스에 추가하시겠습니까?
+  코드를 생성하고 있습니다...
+C:\Users\KCW\Downloads\OpenGL_Templete_sound_Game5\OpenGL_Templete\Wizard.cpp(94,1): error C1010:  미리 컴파일된 헤더를 찾는 동안 예기치 않은 파일의 끝이 나타났습니다. '#include "stdafx.h"'을(를) 소스에 추가하시겠습니까?
