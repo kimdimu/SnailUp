@@ -1,6 +1,8 @@
 // OpenGL_Templete.cpp : 응용 프로그램에 대한 진입점을 정의합니다.
 //
-
+#pragma comment(lib, "Ws2_32.lib")
+#include <winsock2.h>
+#include "CirQueue.h"
 #include "global.h"
 #include "dsTexture.h"
 #include <time.h>
@@ -13,6 +15,58 @@
 #include "SnailAI.h"
 
 #include <stdlib.h>
+//-------------------------------------
+#define WM_SOCKET   WM_USER+1
+#define BUFSIZE  1024
+
+_tgSNAILMOVE	g_myImage;
+
+
+SOCKET		g_sock = INVALID_SOCKET;
+
+CCirQueue	g_cirQueue;
+
+
+void OnUpdate(HWND hWnd, DWORD tick);
+void CreateBuffer(HWND hWnd, HDC hDC);
+void ReleaseBuffer(HWND hWnd, HDC hDC);
+
+// 소켓 함수 오류 출력 후 종료
+void err_quit(char* msg);
+
+BOOL            g_isLogin = FALSE;
+
+char            g_myStrID[20];
+DWORD			g_myID;
+
+LONG			 g_OldEditFunc;
+HINSTANCE		 g_hInst;
+
+
+//user struct...
+typedef struct _tgUser
+{
+	DWORD  dwUserID;
+	char   strUserID[30];
+	int    xPos;
+	int    yPos;
+}USER, * LPUSER;
+
+#define MAX_USER	100
+USER  g_arrayUser[MAX_USER];
+int   g_totalUser = 0;
+
+enum GAME_SCENE_STATE
+{
+	TITLE = 0,
+	LOGIN = 1,
+	GAME = 2,
+};
+
+
+GAME_SCENE_STATE g_gameState = GAME_SCENE_STATE::TITLE;
+DWORD g_titleInterval = 0;
+//-------------------------------------
 
 CFrameOpenGL  g_OpenGL;
 HDC						g_hDC;
@@ -40,10 +94,23 @@ Endline      s_endline; // 결승점 이미지
 
 void OnIdle();
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK EditFunction(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
+
+int OnSendPacket(char* data, int size);
+void OnPacketProcess(LPPACKETHEADER pHeader);
+BOOL isConnect(char* strID);
+LPUSER FindUser(char* strID);
 
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	LPSTR lpCmdLine, int nCmdShow)
 {
+	// 윈속 초기화
+	WSADATA wsa;
+	if (WSAStartup(MAKEWORD(2, 2), &wsa) != 0)
+		return -1;
+
+	g_hInst = hInstance;
+
 	WNDCLASS   wndclass;
 
 	wndclass.style = CS_HREDRAW | CS_VREDRAW;
@@ -59,6 +126,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	if (RegisterClass(&wndclass) == 0)
 	{
+		// 윈속 종료
+		WSACleanup();
 		return 0;
 	}
 
@@ -93,9 +162,11 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	if (hwnd == NULL)
 	{
+		// 윈속 종료
+		WSACleanup();
 		return 0;
 	}
-	
+
 
 	ShowWindow(hwnd, nCmdShow);
 	UpdateWindow(hwnd);
@@ -105,14 +176,14 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	srand(time(NULL));
 
-	//
+#pragma region Create
 	s_snail.Create("Character");
 	s_snail.SetLayer(10);
 
 	s_snailblue.Create("Character");
 	s_snailblue.SetLayer(10);
 
-	s_snailyellow.Create("Character"); 
+	s_snailyellow.Create("Character");
 	s_snailyellow.SetLayer(10);
 
 	s_snailred.Create("Character");
@@ -169,6 +240,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	g_MapObj.Create("mapdata.txt");
 
+#pragma endregion
+
 	dsOpenALSoundManager* pSoundManger = GetOpenALSoundManager();
 	dsSound* pSound = pSoundManger->LoadSound("./Resources/Sounds/William Tell Overture Finale.wav", true);
 	if (pSound)
@@ -179,6 +252,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	g_tick = GetTickCount();
 
 	MSG msg;
+	DWORD tick = GetTickCount();
 	while (1)
 	{
 		//윈도우 메세지가 있을경우 메세지를 처리한다.
@@ -192,9 +266,62 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		else //메세지가 없을 경우 게임 루프를 실행한다.
 		{
 			OnIdle();
+			DWORD curTick = GetTickCount();
+			switch (g_gameState)
+			{
+			case GAME_SCENE_STATE::TITLE:
+			{
+				HDC hDC = GetDC(hwnd);
+
+				g_titleInterval += (curTick - tick);
+				if (g_titleInterval >= 5000)
+				{
+					g_gameState = GAME_SCENE_STATE::LOGIN;
+					TextOut(hDC, 300, 300, "                              ",
+						strlen("                              "));
+				}
+				else
+				{
+					TextOut(hDC, 300, 300, "GAME TITLE!!!",
+						strlen("GAME TITLE!!!"));
+				}
+				ReleaseDC(hwnd, hDC);
+			}
+			break;
+			case GAME_SCENE_STATE::LOGIN:
+			{
+				HDC hDC = GetDC(hwnd);
+				int yID = 0;
+				for (int i = 0; i < g_totalUser; i++)
+				{
+					if (g_arrayUser[i].dwUserID == 0)
+						continue;
+
+					TextOut(hDC, 10, yID, g_arrayUser[i].strUserID,
+						strlen(g_arrayUser[i].strUserID));
+					yID += 20;
+				}
+				ReleaseDC(hwnd, hDC);
+			}
+			break;
+			case GAME_SCENE_STATE::GAME:
+			{
+				OnIdle();
+				OnUpdate(hwnd, curTick - tick);
+				tick = curTick;
+
+				//g_MainBuffer->DrawImage(g_Bitmap, 0, 0);
+			}
+			break;
+			}
+		tick = curTick;
 		}
+
 	}
 
+	closesocket(g_sock);
+	// 윈속 종료
+	WSACleanup();
 	ReleaseDC(hwnd, g_hDC);
 	return (int)msg.wParam;
 }
@@ -254,3 +381,175 @@ void OnIdle()
 }
 
 
+
+LRESULT CALLBACK EditFunction(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+{
+	switch (message)
+	{
+	case WM_KEYDOWN:
+	{
+		if (wParam == VK_RETURN)
+		{
+			GetWindowText(hDlg, g_myStrID, 20);
+			SetWindowLong(hDlg, GWL_WNDPROC, (LONG)g_OldEditFunc);
+			DestroyWindow(hDlg);
+
+			//SEND MY LOGIN DATA....
+			MYLOGIN  myLogin;
+			myLogin.id = PKT_MY_LOGIN;
+			myLogin.size = sizeof(MYLOGIN);
+			strcpy(myLogin.playerid, g_myStrID);
+
+			OnSendPacket((char*)& myLogin, myLogin.size);
+		}
+	}
+	return TRUE;
+	}
+
+	return ((WNDPROC)g_OldEditFunc)(hDlg, message, wParam, lParam);
+}
+
+int OnSendPacket(char* data, int size)
+{
+	int retval = send(g_sock, data, size, 0);
+	if (retval == SOCKET_ERROR)
+	{
+		if (WSAGetLastError() != WSAEWOULDBLOCK)
+		{
+		}
+	}
+
+	return retval;
+}
+
+
+// 소켓 함수 오류 출력 후 종료
+void err_quit(char* msg)
+{
+	LPVOID lpMsgBuf;
+	FormatMessage(
+		FORMAT_MESSAGE_ALLOCATE_BUFFER |
+		FORMAT_MESSAGE_FROM_SYSTEM,
+		NULL, WSAGetLastError(),
+		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+		(LPTSTR)& lpMsgBuf, 0, NULL);
+	MessageBox(NULL, (LPCTSTR)lpMsgBuf, msg, MB_ICONERROR);
+	LocalFree(lpMsgBuf);
+	exit(-1);
+}
+
+
+
+void OnPacketProcess(LPPACKETHEADER pHeader)
+{
+	switch (pHeader->id)
+	{
+	case PKT_MY_LOGIN:
+	{
+		LPMYLOGIN pMyLogin = (LPMYLOGIN)pHeader;
+		if (!strcmp(g_myStrID, pMyLogin->playerid))
+		{
+			g_arrayUser[g_totalUser].dwUserID = pMyLogin->userID;
+			strcpy(g_arrayUser[g_totalUser].strUserID, pMyLogin->playerid);
+			g_totalUser++;
+
+			g_isLogin = TRUE;
+			g_myID = pMyLogin->userID;
+
+			g_gameState = GAME_SCENE_STATE::GAME;
+
+			pMyLogin->id = PKT_USER_LOGIN;
+			OnSendPacket((char*)pMyLogin, pMyLogin->size);
+		}
+	}
+	break;
+	case PKT_USER_LOGIN:
+	{
+		LPMYLOGIN pUserLogin = (LPMYLOGIN)pHeader;
+		//다른 유저 접속...
+		if (strcmp(g_myStrID, pUserLogin->playerid))
+		{
+			if (isConnect(pUserLogin->playerid))
+				return;
+
+			g_arrayUser[g_totalUser].dwUserID = pUserLogin->userID;
+			strcpy(g_arrayUser[g_totalUser].strUserID, pUserLogin->playerid);
+			g_totalUser++;
+
+			MYLOGIN myLogin;
+			myLogin.id = PKT_LOGIN_NOTIFY;
+			myLogin.size = sizeof(MYLOGIN);
+			strcpy(myLogin.playerid, g_myStrID);
+
+			OnSendPacket((char*)& myLogin, myLogin.size);
+		}
+	}
+	break;
+	case PKT_LOGIN_NOTIFY:
+	{
+		LPMYLOGIN pUserLogin = (LPMYLOGIN)pHeader;
+
+		//다른 유저 접속...
+		if (strcmp(g_myStrID, pUserLogin->playerid))
+		{
+			if (isConnect(pUserLogin->playerid))
+				return;
+
+			g_arrayUser[g_totalUser].dwUserID = pUserLogin->userID;
+			strcpy(g_arrayUser[g_totalUser].strUserID, pUserLogin->playerid);
+			g_totalUser++;
+		}
+	}
+	break;
+	case PKT_LOGOUT:
+	{
+		LPMYLOGIN pUserLogOut = (LPMYLOGIN)pHeader;
+		LPUSER pUser = FindUser(pUserLogOut->playerid);
+		if (pUser != NULL)
+		{
+			pUser->dwUserID = 0; //logout....
+		}
+	}
+	break;
+	case PKT_SNAILMOVE:
+	{
+		LPSNAILMOVE pUserLogOut = (LPSNAILMOVE)pHeader;
+		g_myImage.xpos = pUserLogOut->xpos;
+		g_myImage.ypos = pUserLogOut->ypos;
+	}
+	break;
+	}
+}
+
+
+BOOL isConnect(char* strID)
+{
+	for (int i = 0; i < g_totalUser; i++)
+	{
+		if (!strcmp(strID, g_arrayUser[i].strUserID))
+		{
+			if (g_arrayUser[i].dwUserID == 0)
+				return FALSE;
+
+			return TRUE;
+		}
+	}
+
+	return FALSE;
+}
+
+LPUSER FindUser(char* strID)
+{
+	for (int i = 0; i < g_totalUser; i++)
+	{
+		if (!strcmp(strID, g_arrayUser[i].strUserID))
+		{
+			if (g_arrayUser[i].dwUserID == 0)
+				return NULL;
+
+			return &g_arrayUser[i];
+		}
+	}
+
+	return NULL;
+}
