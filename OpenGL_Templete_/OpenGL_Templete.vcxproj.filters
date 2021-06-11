@@ -72,21 +72,6 @@
     <ClInclude Include="MapSubObject.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Wizard.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="MonsterA.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="MonsterB.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="MonsterC.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Shot.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="SmallStone_img.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -96,10 +81,13 @@
     <ClInclude Include="Endline.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="SnailBlue.h">
+    <ClInclude Include="NewSnail.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Snail.h">
+    <ClInclude Include="CirQueue.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="packet.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -152,49 +140,25 @@
     <ClCompile Include="MapSubObject.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Wizard.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="MonsterA.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="MonsterB.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="MonsterC.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Shot.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="SmallStone_img.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Snail.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="SnailAI.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="SnailBlue.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="SnailRed.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="SnailYellow.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Endline.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Wizard0.cpp">
+    <ClCompile Include="BigStone.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="BigStone.cpp">
+    <ClCompile Include="NewSnail.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CirQueue.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

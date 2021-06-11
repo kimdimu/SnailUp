@@ -1,46 +1,21 @@
-﻿  MonsterA.cpp
-  c1xx: fatal error C1083: 소스 파일을 열 수 없습니다. 'MonsterA.cpp': No such file or directory
-  MonsterB.cpp
-  c1xx: fatal error C1083: 소스 파일을 열 수 없습니다. 'MonsterB.cpp': No such file or directory
-  MonsterC.cpp
-  c1xx: fatal error C1083: 소스 파일을 열 수 없습니다. 'MonsterC.cpp': No such file or directory
-  MyCharacter.cpp
-D:\DSU\Univercity\3-1\네퉉\달\OpenGL_Templete_\dsDef.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-D:\DSU\Univercity\3-1\네퉉\달\OpenGL_Templete_\MyCharacter.h(57,23): warning C4244:  'return': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\DSU\Univercity\3-1\네퉉\달\OpenGL_Templete_\MyCharacter.h(61,23): warning C4244:  'return': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\DSU\Univercity\3-1\네퉉\달\OpenGL_Templete_\MyCharacter.cpp(26,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
-D:\DSU\Univercity\3-1\네퉉\달\OpenGL_Templete_\MyCharacter.cpp(27,1): warning C4996:  'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message :  'fscanf' 선언을 참조하십시오.
-D:\DSU\Univercity\3-1\네퉉\달\OpenGL_Templete_\MyCharacter.cpp(31,1): warning C4996:  'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message :  'fscanf' 선언을 참조하십시오.
-D:\DSU\Univercity\3-1\네퉉\달\OpenGL_Templete_\MyCharacter.cpp(36,1): warning C4996:  'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message :  'fscanf' 선언을 참조하십시오.
-D:\DSU\Univercity\3-1\네퉉\달\OpenGL_Templete_\MyCharacter.cpp(24,26): warning C4101:  'type' :참조되지 않은 지역 변수입니다.
-D:\DSU\Univercity\3-1\네퉉\달\OpenGL_Templete_\MyCharacter.cpp(71,27): warning C4244:  '인수': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\DSU\Univercity\3-1\네퉉\달\OpenGL_Templete_\MyCharacter.cpp(70,27): warning C4244:  '인수': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\DSU\Univercity\3-1\네퉉\달\OpenGL_Templete_\MyCharacter.cpp(69,27): warning C4244:  '인수': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Shot.cpp
-  SmallStone_img.cpp
-D:\DSU\Univercity\3-1\네퉉\달\OpenGL_Templete_\MyCharacter.cpp(68,27): warning C4244:  '인수': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\DSU\Univercity\3-1\네퉉\달\OpenGL_Templete_\MyCharacter.cpp(68,27): warning C4244: c1xx: fatal error C1083: 소스 파일을 열 수 없습니다. 'Shot.cpp': No such file or directory
-D:\DSU\Univercity\3-1\네퉉\달\OpenGL_Templete_\dsDef.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-D:\DSU\Univercity\3-1\네퉉\달\OpenGL_Templete_\MyCharacter.h(57,23): warning C4244:  'return': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\DSU\Univercity\3-1\네퉉\달\OpenGL_Templete_\MyCharacter.h(61,23): warning C4244:  'return': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Snail.cpp
-  SnailBlue.cpp
-  SnailRed.cpp
-  SnailYellow.cpp
-  stdafx.cpp
-  Wizard.cpp
-  Wizard0.cpp
-  코드를 생성하고 있습니다...
-D:\DSU\Univercity\3-1\네퉉\달\OpenGL_Templete_\SmallStone_img.cpp(52,28): warning C4244:  '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\DSU\Univercity\3-1\네퉉\달\OpenGL_Templete_\SmallStone_img.cpp(52,28): warning C4244: c1xx: fatal error C1083: 소스 파일을 열 수 없습니다. 'Snail.cpp': No such file or directory
-D:\DSU\Univercity\3-1\네퉉\달\OpenGL_Templete_\SmallStone_img.cpp(52,28): warning C4244: c1xx: fatal error C1083: 소스 파일을 열 수 없습니다. 'SnailBlue.cpp': No such file or directory
-D:\DSU\Univercity\3-1\네퉉\달\OpenGL_Templete_\SmallStone_img.cpp(52,28): warning C4244: c1xx: fatal error C1083: 소스 파일을 열 수 없습니다. 'SnailRed.cpp': No such file or directory
-D:\DSU\Univercity\3-1\네퉉\달\OpenGL_Templete_\SmallStone_img.cpp(52,28): warning C4244: c1xx: fatal error C1083: 소스 파일을 열 수 없습니다. 'SnailYellow.cpp': No such file or directory
-D:\DSU\Univercity\3-1\네퉉\달\OpenGL_Templete_\SmallStone_img.cpp(52,28): warning C4244: c1xx: fatal error C1083: 소스 파일을 열 수 없습니다. 'Wizard.cpp': No such file or directory
-D:\DSU\Univercity\3-1\네퉉\달\OpenGL_Templete_\SmallStone_img.cpp(52,28): warning C4244: c1xx: fatal error C1083: 소스 파일을 열 수 없습니다. 'Wizard0.cpp': No such file or directory
-D:\DSU\Univercity\3-1\네퉉\달\OpenGL_Templete_\SmallStone_img.cpp(43): warning C4715:  'SmallStone_img::OnUpdate': 모든 제어 경로에서 값을 반환하지는 않습니다.
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets(429,5): error MSB6006: "CL.exe"이(가) 종료되었습니다(코드: 2).
+﻿  CirQueue.cpp
+  libpng16.lib(png.obj) : /GL로 컴파일한 MSIL .netmodule 또는 모듈이 있습니다. /LTCG를 지정하여 링크를 다시 시작하십시오. /LTCG를 링크 명령줄에 추가하면 링커 성능이 향상됩니다.
+LINK : warning LNK4075: '/INCREMENTAL'이(가) '/LTCG' 사양으로 인해 무시됩니다.
+LINK : warning LNK4098: 'MSVCRT' defaultlib가 다른 라이브러리와 충돌합니다. /NODEFAULTLIB:library를 사용하십시오.
+  코드를 생성하고 있습니다.
+  코드를 생성했습니다.
+libpng16.lib(png.obj) : warning LNK4099: 'libpng.pdb' PDB를 'libpng16.lib(png.obj)' 또는 'E:\GameProgramming\SnailUp\OpenGL_Templete_\Debug\libpng.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+libpng16.lib(pngread.obj) : warning LNK4099: 'libpng.pdb' PDB를 'libpng16.lib(pngread.obj)' 또는 'E:\GameProgramming\SnailUp\OpenGL_Templete_\Debug\libpng.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+libpng16.lib(pngerror.obj) : warning LNK4099: 'libpng.pdb' PDB를 'libpng16.lib(pngerror.obj)' 또는 'E:\GameProgramming\SnailUp\OpenGL_Templete_\Debug\libpng.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+libpng16.lib(pngget.obj) : warning LNK4099: 'libpng.pdb' PDB를 'libpng16.lib(pngget.obj)' 또는 'E:\GameProgramming\SnailUp\OpenGL_Templete_\Debug\libpng.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+libpng16.lib(pngwrite.obj) : warning LNK4099: 'libpng.pdb' PDB를 'libpng16.lib(pngwrite.obj)' 또는 'E:\GameProgramming\SnailUp\OpenGL_Templete_\Debug\libpng.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+libpng16.lib(pngmem.obj) : warning LNK4099: 'libpng.pdb' PDB를 'libpng16.lib(pngmem.obj)' 또는 'E:\GameProgramming\SnailUp\OpenGL_Templete_\Debug\libpng.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+libpng16.lib(pngrio.obj) : warning LNK4099: 'libpng.pdb' PDB를 'libpng16.lib(pngrio.obj)' 또는 'E:\GameProgramming\SnailUp\OpenGL_Templete_\Debug\libpng.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+libpng16.lib(pngrutil.obj) : warning LNK4099: 'libpng.pdb' PDB를 'libpng16.lib(pngrutil.obj)' 또는 'E:\GameProgramming\SnailUp\OpenGL_Templete_\Debug\libpng.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+libpng16.lib(pngrtran.obj) : warning LNK4099: 'libpng.pdb' PDB를 'libpng16.lib(pngrtran.obj)' 또는 'E:\GameProgramming\SnailUp\OpenGL_Templete_\Debug\libpng.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+libpng16.lib(pngtrans.obj) : warning LNK4099: 'libpng.pdb' PDB를 'libpng16.lib(pngtrans.obj)' 또는 'E:\GameProgramming\SnailUp\OpenGL_Templete_\Debug\libpng.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+libpng16.lib(pngset.obj) : warning LNK4099: 'libpng.pdb' PDB를 'libpng16.lib(pngset.obj)' 또는 'E:\GameProgramming\SnailUp\OpenGL_Templete_\Debug\libpng.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+libpng16.lib(pngwutil.obj) : warning LNK4099: 'libpng.pdb' PDB를 'libpng16.lib(pngwutil.obj)' 또는 'E:\GameProgramming\SnailUp\OpenGL_Templete_\Debug\libpng.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+libpng16.lib(pngwio.obj) : warning LNK4099: 'libpng.pdb' PDB를 'libpng16.lib(pngwio.obj)' 또는 'E:\GameProgramming\SnailUp\OpenGL_Templete_\Debug\libpng.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+libpng16.lib(pngwtran.obj) : warning LNK4099: 'libpng.pdb' PDB를 'libpng16.lib(pngwtran.obj)' 또는 'E:\GameProgramming\SnailUp\OpenGL_Templete_\Debug\libpng.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+  OpenGL_Templete.vcxproj -> E:\GameProgramming\SnailUp\OpenGL_Templete_\Debug\OpenGL_Templete.exe

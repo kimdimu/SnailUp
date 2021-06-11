@@ -146,8 +146,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BigStone.h" />
+    <ClInclude Include="CirQueue.h" />
     <ClInclude Include="Endline.h" />
-    <ClInclude Include="MonsterA.h" />
     <ClInclude Include="CWaves.h" />
     <ClInclude Include="dsDef.h" />
     <ClInclude Include="dsManager.h" />
@@ -162,22 +162,18 @@
     <ClInclude Include="glf.h" />
     <ClInclude Include="MapObject.h" />
     <ClInclude Include="MapSubObject.h" />
-    <ClInclude Include="MonsterB.h" />
-    <ClInclude Include="MonsterC.h" />
     <ClInclude Include="MyCharacter.h" />
     <ClInclude Include="MyObject.h" />
+    <ClInclude Include="NewSnail.h" />
+    <ClInclude Include="packet.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="global.h" />
-    <ClInclude Include="Shot.h" />
     <ClInclude Include="SmallStone_img.h" />
-    <ClInclude Include="Snail.h" />
-    <ClInclude Include="SnailBlue.h" />
-    <ClInclude Include="Wizard.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BigStone.cpp" />
+    <ClCompile Include="CirQueue.cpp" />
     <ClCompile Include="Endline.cpp" />
-    <ClCompile Include="MonsterA.cpp" />
     <ClCompile Include="CWaves.cpp" />
     <ClCompile Include="dsManager.cpp" />
     <ClCompile Include="dsObject.cpp" />
@@ -191,23 +187,15 @@
     <ClCompile Include="glf.c" />
     <ClCompile Include="MapObject.cpp" />
     <ClCompile Include="MapSubObject.cpp" />
-    <ClCompile Include="MonsterB.cpp" />
-    <ClCompile Include="MonsterC.cpp" />
     <ClCompile Include="MyCharacter.cpp" />
     <ClCompile Include="MyObject.cpp" />
+    <ClCompile Include="NewSnail.cpp" />
     <ClCompile Include="OpenGL_Templete.cpp" />
-    <ClCompile Include="Shot.cpp" />
     <ClCompile Include="SmallStone_img.cpp" />
-    <ClCompile Include="Snail.cpp" />
     <ClCompile Include="SnailAI.cpp" />
-    <ClCompile Include="SnailBlue.cpp" />
-    <ClCompile Include="SnailRed.cpp" />
-    <ClCompile Include="SnailYellow.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Wizard.cpp" />
-    <ClCompile Include="Wizard0.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="OpenGL_Templete.rc" />
