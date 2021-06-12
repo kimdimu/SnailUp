@@ -1,4 +1,5 @@
 #include "MapObject.h"
+#include "CirQueue.h"
 #include "MapSubObject.h"
 #include "BigStone.h"
 #include "SmallStone_img.h"
@@ -16,6 +17,7 @@ extern int   g_totalUser;
 
 extern BigStone		s_bigstone;
 extern BigStone      s_bigstone2;
+extern char            g_myStrID[20];
 
 extern SmallStone_img      s_smallstone;
 extern SmallStone_img      s_smallstone2;
@@ -33,6 +35,9 @@ extern Endline      s_endline;
 extern bool blueout;
 extern bool yellowout;
 extern bool redout;
+
+extern  int OnSendPacket(char* data, int size);
+
 CMapObject::CMapObject()
 {
 	scean = 0;
@@ -494,14 +499,87 @@ void CMapObject::OnUpdate(DWORD tick)
 				|| s_smallstone.OnUpdate(tick, snailarr[i]->ReturnX(), snailarr[i]->ReturnY()) == true
 				|| s_smallstone2.OnUpdate(tick, snailarr[i]->ReturnX(), snailarr[i]->ReturnY()) == true)
 			{
-				//snailarr[i]->SetPosition(-128, 450);
+				snailarr[i]->SetPosition(-128, 450);
 
 				if (i == 0)
+				{
 					blueout = true;
+					ISDEAD isd;
+					isd.id = PKT_ISDEAD;
+					isd.size = sizeof(ISDEAD);
+					isd.isDead[0] = blueout;
+					isd.isDead[1] = yellowout;
+					isd.isDead[2] = redout;
+					strcpy(isd.playerid, g_myStrID);
+					OnSendPacket((char*)& isd, isd.size);
+				}
 				else if (i == 1)
+				{
 					yellowout = true;
+					ISDEAD isd;
+					isd.id = PKT_ISDEAD;
+					isd.size = sizeof(ISDEAD);
+					isd.isDead[0] = blueout;
+					isd.isDead[1] = yellowout;
+					isd.isDead[2] = redout;
+					strcpy(isd.playerid, g_myStrID);
+					OnSendPacket((char*)& isd, isd.size);
+				}
 				else if (i == 2)
+				{
 					redout = true;
+					ISDEAD isd;
+					isd.id = PKT_ISDEAD;
+					isd.size = sizeof(ISDEAD);
+					isd.isDead[0] = blueout;
+					isd.isDead[1] = yellowout;
+					isd.isDead[2] = redout;
+					strcpy(isd.playerid, g_myStrID);
+					OnSendPacket((char*)& isd, isd.size);
+				}
+			}
+
+			if (s_endline.OnUpdate(tick, snailarr[i]->ReturnX(), snailarr[i]->ReturnY()) == true)
+			{
+				if (i == 0)
+				{
+					redout = true;
+					yellowout = true;
+					ISDEAD isd;
+					isd.id = PKT_ISDEAD;
+					isd.size = sizeof(ISDEAD);
+					isd.isDead[0] = blueout;
+					isd.isDead[1] = yellowout;
+					isd.isDead[2] = redout;
+					strcpy(isd.playerid, g_myStrID);
+					OnSendPacket((char*)& isd, isd.size);
+				}
+				else if (i == 1)
+				{
+					blueout = true;
+					redout = true;
+					ISDEAD isd;
+					isd.id = PKT_ISDEAD;
+					isd.size = sizeof(ISDEAD);
+					isd.isDead[0] = blueout;
+					isd.isDead[1] = yellowout;
+					isd.isDead[2] = redout;
+					strcpy(isd.playerid, g_myStrID);
+					OnSendPacket((char*)& isd, isd.size);
+				}
+				else if (i == 2)
+				{
+					blueout = true;
+					yellowout = true;
+					ISDEAD isd;
+					isd.id = PKT_ISDEAD;
+					isd.size = sizeof(ISDEAD);
+					isd.isDead[0] = blueout;
+					isd.isDead[1] = yellowout;
+					isd.isDead[2] = redout;
+					strcpy(isd.playerid, g_myStrID);
+					OnSendPacket((char*)& isd, isd.size);
+				}
 			}
 		}
 
@@ -516,21 +594,21 @@ void CMapObject::OnUpdate(DWORD tick)
 			scean = 7; //red win
 
 
-		//°á½ÂÁ¡
+		////°á½ÂÁ¡
 
-		for (int i = 0; i < g_totalUser; ++i)
-		{
-			if (s_endline.OnUpdate(tick, snailarr[i]->ReturnX(), snailarr[i]->ReturnY()) == true)
-			{
-				if (i == 0)
-					scean = 5;
-				else if (i == 1)
-					scean = 6;
-				else if (i == 1)
-					scean = 7;
-				scean = 5;
-			}
-		}
+		//for (int i = 0; i < g_totalUser; ++i)
+		//{
+		//	if (s_endline.OnUpdate(tick, snailarr[i]->ReturnX(), snailarr[i]->ReturnY()) == true)
+		//	{
+		//		if (i == 0)
+		//			scean = 5;
+		//		else if (i == 1)
+		//			scean = 6;
+		//		else if (i == 1)
+		//			scean = 7;
+		//		scean = 5;
+		//	}
+		//}
 	}
 
 	if (scean == 3)//plÀÇ ÆÐ¹è

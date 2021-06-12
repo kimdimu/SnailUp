@@ -54,6 +54,7 @@ public:
 	int GetLayer() { return m_layer; }
 	int ReturnX()
 	{
+
 		return m_vecPosition.x;
 	}
 	int ReturnY()

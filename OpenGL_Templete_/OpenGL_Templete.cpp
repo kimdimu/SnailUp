@@ -490,6 +490,8 @@ void OnIdle()
 	
 	g_MapObj.OnUpdate(tick);
 
+
+
 	g_OpenGL.EndRender(g_hDC);
 
 	g_tick = tickCount;
@@ -719,15 +721,20 @@ void OnPacketProcess(LPPACKETHEADER pHeader)
 		if (strcmp(g_myStrID, pSnailMove->playerid))
 		{
 			snailarr[pSnailMove->idx]->SetPosition(pSnailMove->xpos, pSnailMove->ypos);
+
+
+
 		}
 	}
 	break;
 	case PKT_ISDEAD:
 	{
-		LPOBJECTMOVE pOMove = (LPOBJECTMOVE)pHeader;
-		if (strcmp(g_myStrID, pOMove->playerid))
+		LPISDEAD pDead = (LPISDEAD)pHeader;
+		if (strcmp(g_myStrID, pDead->playerid))
 		{
-
+			blueout = pDead->isDead[0];
+			yellowout = pDead->isDead[1];
+			redout = pDead->isDead[2];
 		}
 	}
 		break;

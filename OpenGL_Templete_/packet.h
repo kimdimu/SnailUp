@@ -27,11 +27,17 @@ typedef struct _tgClick : public PACKETHEADER
 	int y;
 }CLICK, *LPCLICK;
 
-#define  PKT_ISDEAD     0xbb000000
+//#define  PKT_ISDEAD     0xbb000000
 typedef struct _tgOBEJCTMOVE : public _tgMyLogin
 {
-	bool isdead[3];
+	Vector2 a[4];
 }OBJECTMOVE, *LPOBJECTMOVE;
+
+#define  PKT_ISDEAD     0xdddd0000
+typedef struct _tgISDEAD : public _tgMyLogin
+{
+	bool isDead[3];
+}ISDEAD, * LPISDEAD;
 
 #define  PKT_SNAILMOVE     0xdd000000
 typedef struct _tgSNAILMOVE : public _tgMyLogin
