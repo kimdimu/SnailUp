@@ -7,9 +7,12 @@
 #include <conio.h>
 
 extern NewSnail      s_snail;
-extern NewSnail         s_snailblue;
-extern NewSnail         s_snailyellow;
-extern NewSnail      s_snailred;
+//extern NewSnail         s_snailblue;
+//extern NewSnail         s_snailyellow;
+//extern NewSnail      s_snailred;
+
+extern NewSnail* snailarr[3];
+extern int   g_totalUser;
 
 extern BigStone		s_bigstone;
 extern BigStone      s_bigstone2;
@@ -151,14 +154,19 @@ void CMapObject::OnUpdate(DWORD tick)
 		s_snail.OnUpdate(tick, 3);
 		s_snail.OnDraw(375, 380, 33);
 
+		int x;
 		//위치 초기화하기
-		s_snail.SetPosition(startx, 450);
-		s_snailblue.SetPosition(128, 450);
-		s_snailblue.SetPlayer(0);
-		s_snailyellow.SetPosition(256, 450);
-		s_snailyellow.SetPlayer(1);
-		s_snailred.SetPosition(384, 450);
-		s_snailred.SetPlayer(2);
+		//for (int i = 0 ; i < g_totalUser;++i)
+		//{
+		//	snailarr[i]->SetPosition(128 * (i + 1), 450);
+		//}
+		//s_snail.SetPosition(startx, 450);
+		//s_snailblue.SetPosition(128, 450);
+		//s_snailblue.SetPlayer(0);
+		//s_snailyellow.SetPosition(256, 450);
+		//s_snailyellow.SetPlayer(1);
+		//s_snailred.SetPosition(384, 450);
+		//s_snailred.SetPlayer(2);
 		//
 		s_snailBai.SetPosition(128, 450);
 		s_snailYai.SetPosition(256, 450);
@@ -399,9 +407,10 @@ void CMapObject::OnUpdate(DWORD tick)
 
 	if (scean == 2)//3p모드
 	{
-		s_snailblue.OnUpdate(tick);
-		s_snailyellow.OnUpdate(tick);
-		s_snailred.OnUpdate(tick);
+		for (int i = 0; i < g_totalUser; ++i)
+		{
+			snailarr[i]->OnUpdate(tick);
+		}
 		s_snailBai.OnUpdate(tick);
 		s_snailYai.OnUpdate(tick);
 		s_snailRai.OnUpdate(tick);
@@ -409,9 +418,7 @@ void CMapObject::OnUpdate(DWORD tick)
 		float offset = m_pBackground->OnUpdate(m_pSprite, tick);
 
 
-		int charLayer = s_snailblue.GetLayer();
-		int charLayer1 = s_snailyellow.GetLayer();
-		int charLayer2 = s_snailred.GetLayer();
+		int charLayer = snailarr[0]->GetLayer();
 
 		typedef map<int, CMapSubObject*>  MAP_PREDRAWOBJ;
 		MAP_PREDRAWOBJ			m_mapPreDrawSubObject;
@@ -441,10 +448,11 @@ void CMapObject::OnUpdate(DWORD tick)
 			pSubObj->OnUpdate(m_pSprite, tick, offset);
 		}
 
-		s_snailblue.OnDraw(0);
-		s_snailyellow.OnDraw(1);
-		s_snailred.OnDraw(2);
 
+		for (int i = 0; i < g_totalUser; ++i)
+		{
+			snailarr[i]->OnDraw(i);
+		}
 
 		s_bigstone.OnMoveY(offset);
 		s_bigstone.OnDraw(0);
@@ -475,33 +483,25 @@ void CMapObject::OnUpdate(DWORD tick)
 		m_mapPreDrawSubObject.clear();
 		m_mapPostDrawSubObject.clear();
 
-		//게임 오버
-		if (s_bigstone.OnUpdate(tick, s_snailblue.ReturnX(), s_snailblue.ReturnY()) == true
-			|| s_bigstone2.OnUpdate(tick, s_snailblue.ReturnX(), s_snailblue.ReturnY()) == true
-			|| s_smallstone.OnUpdate(tick, s_snailblue.ReturnX(), s_snailblue.ReturnY()) == true
-			|| s_smallstone2.OnUpdate(tick, s_snailblue.ReturnX(), s_snailblue.ReturnY()) == true)
+		for (int i = 0; i < g_totalUser; ++i)
 		{
-			s_snailblue.SetPosition(-128, 450);
-			blueout = true;
+			//게임 오버
+			if (s_bigstone.OnUpdate(tick, snailarr[i]->ReturnX(), snailarr[i]->ReturnY()) == true
+				|| s_bigstone2.OnUpdate(tick, snailarr[i]->ReturnX(), snailarr[i]->ReturnY()) == true
+				|| s_smallstone.OnUpdate(tick, snailarr[i]->ReturnX(), snailarr[i]->ReturnY()) == true
+				|| s_smallstone2.OnUpdate(tick, snailarr[i]->ReturnX(), snailarr[i]->ReturnY()) == true)
+			{
+				snailarr[i]->SetPosition(-128, 450);
+
+				if (i == 0)
+					blueout = true;
+				else if (i == 1)
+					yellowout = true;
+				else if (i == 1)
+					redout = true;
+			}
 		}
 
-		if (s_bigstone.OnUpdate(tick, s_snailyellow.ReturnX(), s_snailyellow.ReturnY()) == true
-			|| s_bigstone2.OnUpdate(tick, s_snailyellow.ReturnX(), s_snailyellow.ReturnY()) == true
-			|| s_smallstone.OnUpdate(tick, s_snailyellow.ReturnX(), s_snailyellow.ReturnY()) == true
-			|| s_smallstone2.OnUpdate(tick, s_snailyellow.ReturnX(), s_snailyellow.ReturnY()) == true)
-		{
-			s_snailyellow.SetPosition(-128, 450);
-			yellowout = true;
-		}
-
-		if (s_bigstone.OnUpdate(tick, s_snailred.ReturnX(), s_snailred.ReturnY()) == true
-			|| s_bigstone2.OnUpdate(tick, s_snailred.ReturnX(), s_snailred.ReturnY()) == true
-			|| s_smallstone.OnUpdate(tick, s_snailred.ReturnX(), s_snailred.ReturnY()) == true
-			|| s_smallstone2.OnUpdate(tick, s_snailred.ReturnX(), s_snailred.ReturnY()) == true)
-		{
-			s_snailred.SetPosition(-128, 450);
-			redout = true;
-		}
 
 		if (redout && yellowout)
 			scean = 5; //blue win
@@ -512,18 +512,21 @@ void CMapObject::OnUpdate(DWORD tick)
 		if (blueout && yellowout)
 			scean = 7; //red win
 
+
 		//결승점
-		if (s_endline.OnUpdate(tick, s_snailblue.ReturnX(), s_snailblue.ReturnY()) == true)
+
+		for (int i = 0; i < g_totalUser; ++i)
 		{
-			scean = 5;
-		}
-		if (s_endline.OnUpdate(tick, s_snailyellow.ReturnX(), s_snailyellow.ReturnY()) == true)
-		{
-			scean = 6;
-		}
-		if (s_endline.OnUpdate(tick, s_snailred.ReturnX(), s_snailred.ReturnY()) == true)
-		{
-			scean = 7;
+			if (s_endline.OnUpdate(tick, snailarr[i]->ReturnX(), snailarr[i]->ReturnY()) == true)
+			{
+				if (i == 0)
+					scean = 5;
+				else if (i == 1)
+					scean = 6;
+				else if (i == 1)
+					scean = 7;
+				scean = 5;
+			}
 		}
 	}
 

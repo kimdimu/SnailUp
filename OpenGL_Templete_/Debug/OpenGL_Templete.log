@@ -2,27 +2,30 @@
 E:\GameProgramming\SnailUp\OpenGL_Templete_\dsDef.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
 E:\GameProgramming\SnailUp\OpenGL_Templete_\MyCharacter.h(57,23): warning C4244:  'return': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 E:\GameProgramming\SnailUp\OpenGL_Templete_\MyCharacter.h(61,23): warning C4244:  'return': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(177,12): warning C4244:  '인수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(238,28): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(316,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(181,12): warning C4244:  '인수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(240,28): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(367,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message :  'strcpy' 선언을 참조하십시오.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(371,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message :  'strcpy' 선언을 참조하십시오.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(398,1): warning C4996:  'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(393,1): warning C4996:  'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\winsock2.h(1831): message :  'inet_addr' 선언을 참조하십시오.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(405,1): warning C4996:  'WSAAsyncSelect': Use WSAEventSelect() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(400,1): warning C4996:  'WSAAsyncSelect': Use WSAEventSelect() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\winsock2.h(2680): message :  'WSAAsyncSelect' 선언을 참조하십시오.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(483,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(478,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message :  'strcpy' 선언을 참조하십시오.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(528,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(523,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message :  'strcpy' 선언을 참조하십시오.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(592,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(590,43): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(620,43): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(649,43): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(673,71): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(673,53): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(594,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message :  'strcpy' 선언을 참조하십시오.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(615,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(623,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message :  'strcpy' 선언을 참조하십시오.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(621,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(629,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message :  'strcpy' 선언을 참조하십시오.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(638,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(653,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message :  'strcpy' 선언을 참조하십시오.
   libpng16.lib(png.obj) : /GL로 컴파일한 MSIL .netmodule 또는 모듈이 있습니다. /LTCG를 지정하여 링크를 다시 시작하십시오. /LTCG를 링크 명령줄에 추가하면 링커 성능이 향상됩니다.
 LINK : warning LNK4075: '/INCREMENTAL'이(가) '/LTCG' 사양으로 인해 무시됩니다.

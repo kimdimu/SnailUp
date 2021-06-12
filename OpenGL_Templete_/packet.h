@@ -37,6 +37,7 @@ typedef struct _tgWINDOWMOVE : public PACKETHEADER
 #define  PKT_SNAILMOVE     0xdd000000
 typedef struct _tgSNAILMOVE : public _tgMyLogin
 {
+	int idx;
 	int xpos;
 	int ypos;
 }SNAILMOVE, * LPSNAILMOVE;

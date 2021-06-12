@@ -38,6 +38,7 @@ BOOL            g_isLogin = FALSE;
 
 char            g_myStrID[20];
 DWORD			g_myID;
+int		idx;
 
 LONG			 g_OldEditFunc;
 HINSTANCE		 g_hInst;
@@ -54,6 +55,7 @@ typedef struct _tgUser
 
 #define MAX_USER	100
 USER  g_arrayUser[MAX_USER];
+NewSnail* snailarr[3];
 int   g_totalUser = 0;
 
 enum GAME_SCENE_STATE
@@ -74,9 +76,9 @@ HDC						g_hDC;
 CMapObject    g_MapObj;
 DWORD         g_tick;
 NewSnail	s_snail;
-NewSnail		s_snailblue; //ai blue
-NewSnail		s_snailyellow; // ai yellow
-NewSnail	s_snailred; // ai red
+//NewSnail		s_snailblue; //ai blue
+//NewSnail		s_snailyellow; // ai yellow
+//NewSnail	s_snailred; // ai red
 BigStone		s_bigstone; // 큰돌1
 BigStone		s_bigstone2; // 큰돌2
 SmallStone_img      s_smallstone; // 작은돌1
@@ -104,6 +106,8 @@ LPUSER FindUser(char* strID);
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	LPSTR lpCmdLine, int nCmdShow)
 {
+#pragma region t
+
 	// 윈속 초기화
 	WSADATA wsa;
 	if (WSAStartup(MAKEWORD(2, 2), &wsa) != 0)
@@ -175,19 +179,17 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	GetClientRect(hwnd, &rc);
 
 	srand(time(NULL));
+#pragma endregion
 
 #pragma region Create
 	s_snail.Create("Character");
 	s_snail.SetLayer(10);
+	//for (int i = 0; i < g_totalUser+1; ++i)
+	//{
+	//snailarr[i]->Create("Character");
+	//snailarr[i]->SetLayer(10);
 
-	s_snailblue.Create("Character");
-	s_snailblue.SetLayer(10);
-
-	s_snailyellow.Create("Character");
-	s_snailyellow.SetLayer(10);
-
-	s_snailred.Create("Character");
-	s_snailred.SetLayer(10);
+	//}
 	//
 	s_snailBai.Create("CharacterB");
 	s_snailBai.SetLayer(10);
@@ -308,14 +310,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			{
 				OnIdle();
 
-				SNAILMOVE sm;
-				sm.id = PKT_SNAILMOVE;
-				sm.size = sizeof(SNAILMOVE);
-				sm.xpos = s_snailblue.ReturnX();
-				sm.ypos = s_snailblue.ReturnY();
-				strcpy(sm.playerid, g_myStrID);
 
-				OnSendPacket((char*)& sm, sm.size);
 
 				OnUpdate(hwnd, curTick - tick);
 				tick = curTick;
@@ -366,10 +361,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		SNAILMOVE sm;
 		sm.id = PKT_SNAILMOVE;
 		sm.size = sizeof(SNAILMOVE);
-		sm.xpos = xOffset;
-		sm.ypos = yOffset;
+		sm.idx = idx;
+		sm.xpos = snailarr[idx]->ReturnX();
+		sm.ypos = snailarr[idx]->ReturnY();
 		strcpy(sm.playerid, g_myStrID);
-		
 		OnSendPacket((char*)& sm, sm.size);
 	}
 	break;
@@ -588,6 +583,13 @@ void OnPacketProcess(LPPACKETHEADER pHeader)
 		LPMYLOGIN pMyLogin = (LPMYLOGIN)pHeader;
 		if (!strcmp(g_myStrID, pMyLogin->playerid))
 		{
+			snailarr[g_totalUser] = new NewSnail();
+			snailarr[g_totalUser]->SetPlayer(g_totalUser);
+			snailarr[g_totalUser]->Create("Character");
+			snailarr[g_totalUser]->SetLayer(10);
+			snailarr[g_totalUser]->SetPosition(128 * (g_totalUser + 1), 450);
+			idx = g_totalUser;
+
 			g_arrayUser[g_totalUser].dwUserID = pMyLogin->userID;
 			strcpy(g_arrayUser[g_totalUser].strUserID, pMyLogin->playerid);
 			g_totalUser++;
@@ -606,10 +608,16 @@ void OnPacketProcess(LPPACKETHEADER pHeader)
 	{
 		LPMYLOGIN pUserLogin = (LPMYLOGIN)pHeader;
 		//다른 유저 접속...
-		if (strcmp(g_myStrID, pUserLogin->playerid))
+		if (strcmp(g_myStrID, pUserLogin->playerid) && g_isLogin)
 		{
 			if (isConnect(pUserLogin->playerid))
 				return;
+
+			snailarr[g_totalUser] = new NewSnail();
+			snailarr[g_totalUser]->SetPlayer(g_totalUser);
+			snailarr[g_totalUser]->Create("Character");
+			snailarr[g_totalUser]->SetLayer(10);
+			snailarr[g_totalUser]->SetPosition(128 * (g_totalUser + 1), 450);
 
 			g_arrayUser[g_totalUser].dwUserID = pUserLogin->userID;
 			strcpy(g_arrayUser[g_totalUser].strUserID, pUserLogin->playerid);
@@ -634,6 +642,13 @@ void OnPacketProcess(LPPACKETHEADER pHeader)
 			if (isConnect(pUserLogin->playerid))
 				return;
 
+			snailarr[g_totalUser] = new NewSnail();
+			snailarr[g_totalUser]->SetPlayer(g_totalUser);
+			snailarr[g_totalUser]->Create("Character");
+			snailarr[g_totalUser]->SetLayer(10);
+			snailarr[g_totalUser]->SetPosition(128 * (g_totalUser + 1), 450);
+			idx = g_totalUser; 
+
 			g_arrayUser[g_totalUser].dwUserID = pUserLogin->userID;
 			strcpy(g_arrayUser[g_totalUser].strUserID, pUserLogin->playerid);
 			g_totalUser++;
@@ -655,7 +670,7 @@ void OnPacketProcess(LPPACKETHEADER pHeader)
 		LPSNAILMOVE pSnailMove = (LPSNAILMOVE)pHeader;
 		if (strcmp(g_myStrID, pSnailMove->playerid))
 		{
-		//s_snailblue.OnMove();
+			snailarr[pSnailMove->idx]->SetPosition(pSnailMove->xpos, pSnailMove->ypos);
 		}
 	}
 	break;
