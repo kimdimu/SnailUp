@@ -30,15 +30,15 @@ extern SnailAI      s_snailYai;
 extern SnailAI      s_snailRai;
 extern Endline      s_endline;
 
-
+extern bool blueout;
+extern bool yellowout;
+extern bool redout;
 CMapObject::CMapObject()
 {
 	scean = 0;
 	startx = 128;
 
-	blueout = false;
-	yellowout = false;
-	redout = false;
+
 }
 
 
@@ -156,18 +156,6 @@ void CMapObject::OnUpdate(DWORD tick)
 
 		int x;
 		//위치 초기화하기
-		//for (int i = 0 ; i < g_totalUser;++i)
-		//{
-		//	snailarr[i]->SetPosition(128 * (i + 1), 450);
-		//}
-		//s_snail.SetPosition(startx, 450);
-		//s_snailblue.SetPosition(128, 450);
-		//s_snailblue.SetPlayer(0);
-		//s_snailyellow.SetPosition(256, 450);
-		//s_snailyellow.SetPlayer(1);
-		//s_snailred.SetPosition(384, 450);
-		//s_snailred.SetPlayer(2);
-		//
 		s_snailBai.SetPosition(128, 450);
 		s_snailYai.SetPosition(256, 450);
 		s_snailRai.SetPosition(384, 450);
@@ -186,9 +174,24 @@ void CMapObject::OnUpdate(DWORD tick)
 		//
 		s_endline.SetPosition(rand() % 400, -300);
 
+		if (g_totalUser == 0)
+		{
 		blueout = false;
-		yellowout = false;
-		redout = false;
+		yellowout = true;
+		redout = true;
+		}
+		else if (g_totalUser == 1)
+		{
+			blueout = false;
+			yellowout = false;
+			redout = true;
+		}
+		else
+		{
+			blueout = false;
+			yellowout = false;
+			redout = false;
+		}
 	}
 	if (scean == 1) //ai모드
 	{
@@ -491,13 +494,13 @@ void CMapObject::OnUpdate(DWORD tick)
 				|| s_smallstone.OnUpdate(tick, snailarr[i]->ReturnX(), snailarr[i]->ReturnY()) == true
 				|| s_smallstone2.OnUpdate(tick, snailarr[i]->ReturnX(), snailarr[i]->ReturnY()) == true)
 			{
-				snailarr[i]->SetPosition(-128, 450);
+				//snailarr[i]->SetPosition(-128, 450);
 
 				if (i == 0)
 					blueout = true;
 				else if (i == 1)
 					yellowout = true;
-				else if (i == 1)
+				else if (i == 2)
 					redout = true;
 			}
 		}

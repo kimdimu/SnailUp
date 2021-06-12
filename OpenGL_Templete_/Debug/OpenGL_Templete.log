@@ -1,43 +1,50 @@
-﻿  CirQueue.cpp
-  OpenGL_Templete.cpp
-E:\GameProgramming\SnailUp\OpenGL_Templete_\dsDef.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+﻿  MapObject.cpp
 E:\GameProgramming\SnailUp\OpenGL_Templete_\dsDef.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
 E:\GameProgramming\SnailUp\OpenGL_Templete_\MyCharacter.h(57,23): warning C4244:  'return': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 E:\GameProgramming\SnailUp\OpenGL_Templete_\MyCharacter.h(61,23): warning C4244:  'return': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(181,12): warning C4244:  '인수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(234,28): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(357,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message :  'strcpy' 선언을 참조하십시오.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(383,1): warning C4996:  'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\winsock2.h(1831): message :  'inet_addr' 선언을 참조하십시오.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(390,1): warning C4996:  'WSAAsyncSelect': Use WSAEventSelect() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\winsock2.h(2680): message :  'WSAAsyncSelect' 선언을 참조하십시오.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(468,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message :  'strcpy' 선언을 참조하십시오.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(513,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message :  'strcpy' 선언을 참조하십시오.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(581,43): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(612,43): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(623,34): warning C4244:  '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(624,34): warning C4244:  '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(625,35): warning C4244:  '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(626,35): warning C4244:  '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(627,36): warning C4244:  '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(628,36): warning C4244:  '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(629,37): warning C4244:  '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(630,37): warning C4244:  '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(650,43): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(674,71): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(674,53): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(585,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message :  'strcpy' 선언을 참조하십시오.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(615,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message :  'strcpy' 선언을 참조하십시오.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(631,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message :  'strcpy' 선언을 참조하십시오.
-E:\GameProgramming\SnailUp\OpenGL_Templete_\OpenGL_Templete.cpp(654,1): warning C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  코드를 생성하고 있습니다...
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message :  'strcpy' 선언을 참조하십시오.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(68,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(70,1): warning C4996:  'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message :  'fscanf' 선언을 참조하십시오.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(79,1): warning C4996:  'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message :  'fscanf' 선언을 참조하십시오.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(81,1): warning C4996:  'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message :  'fscanf' 선언을 참조하십시오.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(89,1): warning C4996:  'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message :  'fscanf' 선언을 참조하십시오.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(92,1): warning C4996:  'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message :  'fscanf' 선언을 참조하십시오.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(163,59): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(163,39): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(164,54): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(164,34): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(165,61): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(165,41): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(166,56): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(166,36): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(175,32): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(293,78): warning C4805:  '==': 연산에 'int' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(297,79): warning C4805:  '==': 연산에 'int' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(301,80): warning C4805:  '==': 연산에 'int' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(305,81): warning C4805:  '==': 연산에 'int' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(346,6): warning C4805:  '==': 연산에 'int' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(347,1): warning C4805:  '==': 연산에 'int' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(348,1): warning C4805:  '==': 연산에 'int' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(349,82): warning C4805:  '==': 연산에 'int' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(352,6): warning C4805:  '==': 연산에 'int' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(353,1): warning C4805:  '==': 연산에 'int' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(354,1): warning C4805:  '==': 연산에 'int' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(355,82): warning C4805:  '==': 연산에 'int' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(358,6): warning C4805:  '==': 연산에 'int' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(359,1): warning C4805:  '==': 연산에 'int' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(360,1): warning C4805:  '==': 연산에 'int' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(361,82): warning C4805:  '==': 연산에 'int' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(493,1): warning C4805:  '==': 연산에 'int' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(494,1): warning C4805:  '==': 연산에 'int' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(495,1): warning C4805:  '==': 연산에 'int' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(495,92): warning C4805:  '==': 연산에 'int' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(157,7): warning C4101:  'x' :참조되지 않은 지역 변수입니다.
+E:\GameProgramming\SnailUp\OpenGL_Templete_\MapObject.cpp(104): warning C4715:  'CMapObject::Create': 모든 제어 경로에서 값을 반환하지는 않습니다.
   libpng16.lib(png.obj) : /GL로 컴파일한 MSIL .netmodule 또는 모듈이 있습니다. /LTCG를 지정하여 링크를 다시 시작하십시오. /LTCG를 링크 명령줄에 추가하면 링커 성능이 향상됩니다.
 LINK : warning LNK4075: '/INCREMENTAL'이(가) '/LTCG' 사양으로 인해 무시됩니다.
 LINK : warning LNK4098: 'MSVCRT' defaultlib가 다른 라이브러리와 충돌합니다. /NODEFAULTLIB:library를 사용하십시오.

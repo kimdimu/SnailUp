@@ -93,6 +93,9 @@ SnailAI      s_snailBai; // 1p blue
 SnailAI      s_snailYai; // 2p yellow
 SnailAI      s_snailRai; // 3p red
 Endline      s_endline; // 결승점 이미지
+bool blueout = true;
+bool yellowout = true;
+bool redout = true;
 
 void OnIdle();
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -588,6 +591,25 @@ void OnPacketProcess(LPPACKETHEADER pHeader)
 			g_isLogin = TRUE;
 			g_myID = pMyLogin->userID;
 
+			if (g_totalUser == 1)
+			{
+				blueout = false;
+				yellowout = true;
+				redout = true;
+			}
+			else if (g_totalUser == 2)
+			{
+				blueout = false;
+				yellowout = false;
+				redout = true;
+			}
+			else if(g_totalUser==3)
+			{
+				blueout = false;
+				yellowout = false;
+				redout = false;
+			}
+
 			g_gameState = GAME_SCENE_STATE::GAME;
 
 			//다른 사람에게 내가 로그인 했다고 알려줘야지
@@ -615,6 +637,25 @@ void OnPacketProcess(LPPACKETHEADER pHeader)
 			strcpy(g_arrayUser[g_totalUser].strUserID, pUserLogin->playerid);
 			g_totalUser++;
 
+			if (g_totalUser == 1)
+			{
+				blueout = false;
+				yellowout = true;
+				redout = true;
+			}
+			else if (g_totalUser == 2)
+			{
+				blueout = false;
+				yellowout = false;
+				redout = true;
+			}
+			else if(g_totalUser == 3)
+			{
+				blueout = false;
+				yellowout = false;
+				redout = false;
+			}
+
 			//내가 로그인 하고 있었으니 내 정보 보내줄게.
 			//추가로 지금 내 세계의 배경 오브젝트 위치를 보내주지
 			OBJECTMOVE om;
@@ -635,7 +676,7 @@ void OnPacketProcess(LPPACKETHEADER pHeader)
 	break;
 	case PKT_LOGIN_NOTIFY:
 	{
-		LPMYLOGIN pUserLogin = (LPMYLOGIN)pHeader;
+		LPOBJECTMOVE pUserLogin = (LPOBJECTMOVE)pHeader;
 
 		//어 이미 접속해있는 놈으로부터 메세지가 왔군,, 
 		if (strcmp(g_myStrID, pUserLogin->playerid))
@@ -653,6 +694,12 @@ void OnPacketProcess(LPPACKETHEADER pHeader)
 			g_arrayUser[g_totalUser].dwUserID = pUserLogin->userID;
 			strcpy(g_arrayUser[g_totalUser].strUserID, pUserLogin->playerid);
 			g_totalUser++;
+
+			s_bigstone.SetPosition(pUserLogin->a[0].x, pUserLogin->a[0].y);
+			s_bigstone2.SetPosition(pUserLogin->a[1].x, pUserLogin->a[1].y);
+			s_smallstone.SetPosition(pUserLogin->a[2].x, pUserLogin->a[2].y);
+			s_smallstone2.SetPosition(pUserLogin->a[3].x, pUserLogin->a[3].y);
+
 		}
 	}
 	break;
@@ -675,7 +722,7 @@ void OnPacketProcess(LPPACKETHEADER pHeader)
 		}
 	}
 	break;
-	case PKT_OBJECTMOVE:
+	case PKT_ISDEAD:
 	{
 		LPOBJECTMOVE pOMove = (LPOBJECTMOVE)pHeader;
 		if (strcmp(g_myStrID, pOMove->playerid))

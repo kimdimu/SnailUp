@@ -73,7 +73,7 @@ void NewSnail::OnUpdate(DWORD tick)
 		{
 			m_deltaTime2 += tick;
 			if (m_deltaTime2 <= 10)
-				slowdown += 0.021f;
+				slowdown += 0.21f;
 		}
 		else
 		{
@@ -122,7 +122,7 @@ void NewSnail::OnUpdate(DWORD tick)
 		{
 			m_deltaTime2 += tick;
 			if (m_deltaTime2 <= 10)
-				slowdown += 0.021f;
+				slowdown += 0.21f;
 		}
 		else
 		{
@@ -170,7 +170,7 @@ void NewSnail::OnUpdate(DWORD tick)
 		{
 			m_deltaTime2 += tick;
 			if (m_deltaTime2 <= 10)
-				slowdown += 0.021f;
+				slowdown += 0.21f;
 		}
 		else
 		{
