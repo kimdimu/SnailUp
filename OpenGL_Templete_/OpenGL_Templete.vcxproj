@@ -169,6 +169,7 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="global.h" />
     <ClInclude Include="SmallStone_img.h" />
+    <ClInclude Include="SnailAI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BigStone.cpp" />

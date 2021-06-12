@@ -184,12 +184,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 #pragma region Create
 	s_snail.Create("Character");
 	s_snail.SetLayer(10);
-	//for (int i = 0; i < g_totalUser+1; ++i)
-	//{
-	//snailarr[i]->Create("Character");
-	//snailarr[i]->SetLayer(10);
-
-	//}
 	//
 	s_snailBai.Create("CharacterB");
 	s_snailBai.SetLayer(10);
@@ -309,10 +303,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			case GAME_SCENE_STATE::GAME:
 			{
 				OnIdle();
-
-
-
-				OnUpdate(hwnd, curTick - tick);
 				tick = curTick;
 			}
 			break;
@@ -580,6 +570,7 @@ void OnPacketProcess(LPPACKETHEADER pHeader)
 	{
 	case PKT_MY_LOGIN:
 	{
+		//나 로그인 했어요~
 		LPMYLOGIN pMyLogin = (LPMYLOGIN)pHeader;
 		if (!strcmp(g_myStrID, pMyLogin->playerid))
 		{
@@ -599,6 +590,7 @@ void OnPacketProcess(LPPACKETHEADER pHeader)
 
 			g_gameState = GAME_SCENE_STATE::GAME;
 
+			//다른 사람에게 내가 로그인 했다고 알려줘야지
 			pMyLogin->id = PKT_USER_LOGIN;
 			OnSendPacket((char*)pMyLogin, pMyLogin->size);
 		}
@@ -607,7 +599,7 @@ void OnPacketProcess(LPPACKETHEADER pHeader)
 	case PKT_USER_LOGIN:
 	{
 		LPMYLOGIN pUserLogin = (LPMYLOGIN)pHeader;
-		//다른 유저 접속...
+		//어라 다른놈이 로그인 했군
 		if (strcmp(g_myStrID, pUserLogin->playerid) && g_isLogin)
 		{
 			if (isConnect(pUserLogin->playerid))
@@ -623,12 +615,21 @@ void OnPacketProcess(LPPACKETHEADER pHeader)
 			strcpy(g_arrayUser[g_totalUser].strUserID, pUserLogin->playerid);
 			g_totalUser++;
 
-			MYLOGIN myLogin;
-			myLogin.id = PKT_LOGIN_NOTIFY;
-			myLogin.size = sizeof(MYLOGIN);
-			strcpy(myLogin.playerid, g_myStrID);
-
-			OnSendPacket((char*)& myLogin, myLogin.size);
+			//내가 로그인 하고 있었으니 내 정보 보내줄게.
+			//추가로 지금 내 세계의 배경 오브젝트 위치를 보내주지
+			OBJECTMOVE om;
+			om.id = PKT_LOGIN_NOTIFY;
+			om.size = sizeof(OBJECTMOVE);
+			om.a[0].x = s_bigstone.ReturnX();
+			om.a[0].y = s_bigstone.ReturnY();
+			om.a[1].x = s_bigstone2.ReturnX();
+			om.a[1].y = s_bigstone2.ReturnY();
+			om.a[2].x = s_smallstone.ReturnX();
+			om.a[2].y = s_smallstone.ReturnY();
+			om.a[3].x = s_smallstone2.ReturnX();
+			om.a[3].y = s_smallstone2.ReturnY();
+			strcpy(om.playerid, g_myStrID);
+			OnSendPacket((char*)& om, om.size);
 		}
 	}
 	break;
@@ -636,7 +637,7 @@ void OnPacketProcess(LPPACKETHEADER pHeader)
 	{
 		LPMYLOGIN pUserLogin = (LPMYLOGIN)pHeader;
 
-		//다른 유저 접속...
+		//어 이미 접속해있는 놈으로부터 메세지가 왔군,, 
 		if (strcmp(g_myStrID, pUserLogin->playerid))
 		{
 			if (isConnect(pUserLogin->playerid))
@@ -674,6 +675,15 @@ void OnPacketProcess(LPPACKETHEADER pHeader)
 		}
 	}
 	break;
+	case PKT_OBJECTMOVE:
+	{
+		LPOBJECTMOVE pOMove = (LPOBJECTMOVE)pHeader;
+		if (strcmp(g_myStrID, pOMove->playerid))
+		{
+
+		}
+	}
+		break;
 	}
 }
 

@@ -42,6 +42,6 @@ public:
 	void OnDraw(int x, int y, int z);
 	void OnUpdate(DWORD tick, int x);
 	void OnMove(float movex, float movey);
-	void SetPosition(float x, float y) { m_vecPosition.x = x; m_vecPosition.y = y; }
+	//void SetPosition(float x, float y) { m_vecPosition.x = x; m_vecPosition.y = y; }
 };
 

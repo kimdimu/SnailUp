@@ -35,7 +35,7 @@ public:
 	bool firstxReturn() { return firstx; }
 	bool secondxReturn() { return secondx; }
 	bool thirdxReturn() { return thirdx; }
-	void SetPosition(float x, float y) { m_vecPosition.x = x; m_vecPosition.y = y; }
+	//void SetPosition(float x, float y) { m_vecPosition.x = x; m_vecPosition.y = y; }
 	SnailAI();
 	virtual ~SnailAI();
 

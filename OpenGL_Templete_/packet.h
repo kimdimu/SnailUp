@@ -1,5 +1,5 @@
 #pragma once
-
+#include"MyObject.h"
 
 #pragma pack(push, 1)
 
@@ -27,12 +27,11 @@ typedef struct _tgClick : public PACKETHEADER
 	int y;
 }CLICK, *LPCLICK;
 
-#define  PKT_WINDOWMOVE     0xbb000000
-typedef struct _tgWINDOWMOVE : public PACKETHEADER
+#define  PKT_OBJECTMOVE     0xbb000000
+typedef struct _tgOBEJCTMOVE : public _tgMyLogin
 {
-	int xOffset;
-	int yOffset;
-}WINDOWMOVE, *LPWINDOWMOVE;
+	Vector2 a[4];
+}OBJECTMOVE, *LPOBJECTMOVE;
 
 #define  PKT_SNAILMOVE     0xdd000000
 typedef struct _tgSNAILMOVE : public _tgMyLogin

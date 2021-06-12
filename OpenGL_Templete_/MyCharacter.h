@@ -48,7 +48,7 @@ public:
 	void OnUpdate(DWORD tick);
 
 	void SetAnimationChange(CHARMOTION ani);
-         	//void SetPosition(float x, float y) { m_vecPosition.x = x; m_vecPosition.y = y; }
+	void SetPosition(float x, float y) { m_vecPosition.x = x; m_vecPosition.y = y; }
 
 	void SetLayer(int layer) { m_layer = layer; }
 	int GetLayer() { return m_layer; }
