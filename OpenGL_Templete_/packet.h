@@ -30,7 +30,7 @@ typedef struct _tgClick : public PACKETHEADER
 //#define  PKT_ISDEAD     0xbb000000
 typedef struct _tgOBEJCTMOVE : public _tgMyLogin
 {
-	Vector2 a[4];
+	Vector2 a[5];
 }OBJECTMOVE, *LPOBJECTMOVE;
 
 #define  PKT_ISDEAD     0xdddd0000

@@ -383,7 +383,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		ZeroMemory(&serverAddr, sizeof(serverAddr));
 		serverAddr.sin_family = AF_INET;
 		serverAddr.sin_port = htons(30000);
-		serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+		serverAddr.sin_addr.s_addr = inet_addr("192.168.219.105");
 		if (connect(g_sock, (struct sockaddr*) & serverAddr, sizeof(serverAddr)) == SOCKET_ERROR)
 		{
 			closesocket(g_sock);
@@ -671,6 +671,8 @@ void OnPacketProcess(LPPACKETHEADER pHeader)
 			om.a[2].y = s_smallstone.ReturnY();
 			om.a[3].x = s_smallstone2.ReturnX();
 			om.a[3].y = s_smallstone2.ReturnY();
+			om.a[4].x = s_endline.ReturnX();
+			om.a[4].y = s_endline.ReturnY();
 			strcpy(om.playerid, g_myStrID);
 			OnSendPacket((char*)& om, om.size);
 		}
@@ -701,6 +703,7 @@ void OnPacketProcess(LPPACKETHEADER pHeader)
 			s_bigstone2.SetPosition(pUserLogin->a[1].x, pUserLogin->a[1].y);
 			s_smallstone.SetPosition(pUserLogin->a[2].x, pUserLogin->a[2].y);
 			s_smallstone2.SetPosition(pUserLogin->a[3].x, pUserLogin->a[3].y);
+			s_endline.SetPosition(pUserLogin->a[4].x, pUserLogin->a[4].y);
 
 		}
 	}
@@ -718,6 +721,8 @@ void OnPacketProcess(LPPACKETHEADER pHeader)
 	case PKT_SNAILMOVE:
 	{
 		LPSNAILMOVE pSnailMove = (LPSNAILMOVE)pHeader;
+		if (!isConnect(pSnailMove->playerid))
+			return;
 		if (strcmp(g_myStrID, pSnailMove->playerid))
 		{
 			snailarr[pSnailMove->idx]->SetPosition(pSnailMove->xpos, pSnailMove->ypos);
